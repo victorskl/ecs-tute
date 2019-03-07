@@ -9,6 +9,7 @@ public class GameContainer {
   EntityManager manager;
 
   Systems.Render renderingSystem;
+
   Systems.Velocity velocitySystem;
 
   GameContainer() {
@@ -36,8 +37,11 @@ public class GameContainer {
   }
 
   void startGameLoop() {
-    while(true) {
+
+    while (true) {
+
       velocitySystem.update(manager);
+
       renderingSystem.update(manager);
 
       try {
