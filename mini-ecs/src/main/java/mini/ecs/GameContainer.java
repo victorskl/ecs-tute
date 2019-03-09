@@ -1,5 +1,7 @@
 package mini.ecs;
 
+import java.util.Arrays;
+
 public class GameContainer {
 
   public static void main(String[] args) {
@@ -15,10 +17,19 @@ public class GameContainer {
   GameContainer() {
 
     manager = new EntityManager(5);
+    printState();
+
     renderingSystem = new Systems.Render();
     velocitySystem = new Systems.Velocity();
 
-    int id = manager.createEntity(Component.POS | Component.VEL | Component.RENDER);
+    System.out.println("POS: " + Component.POS + ", VEL: " + Component.VEL + ", RDR: " + Component.RENDER);
+    System.out.println();
+
+    //--
+
+    int id = manager.createEntity(Component.POS | Component.VEL | Component.RENDER); // flag=7
+    System.out.println("ENTITY_ID: " + id);
+
     if (id > -1) {
       manager.pos[id].x = 10;
       manager.pos[id].y = 10;
@@ -27,18 +38,29 @@ public class GameContainer {
       manager.rendering[id].name = "player";
     }
 
-    id = manager.createEntity(Component.POS | Component.RENDER);
+    printState();
+
+    //--
+
+    id = manager.createEntity(Component.POS | Component.RENDER); // flag=5
+    System.out.println("ENTITY_ID: " + id);
+
     if (id > -1) {
       manager.pos[id].x = 0;
       manager.pos[id].y = 0;
       manager.rendering[id].name = "tree";
     }
+
+    printState();
+
+    //--
+
     startGameLoop();
   }
 
   void startGameLoop() {
 
-    while (true) {
+    for(int i = 0; i < 10; i++) {
 
       velocitySystem.update(manager);
 
@@ -50,5 +72,15 @@ public class GameContainer {
         e.printStackTrace();
       }
     }
+  }
+
+  void printState() {
+
+    System.out.println("RNG_FLAG state: " + Arrays.toString(manager.flag));
+    System.out.println("COMP_POS state: " + Arrays.toString(manager.pos));
+    System.out.println("COMP_VEL state: " + Arrays.toString(manager.vel));
+    System.out.println("COMP_REN state: " + Arrays.toString(manager.rendering));
+
+    System.out.println();
   }
 }

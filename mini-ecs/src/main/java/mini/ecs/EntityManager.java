@@ -13,6 +13,8 @@ public class EntityManager {
   public final int size;
 
   public EntityManager(int size) {
+    System.out.println("initialize entity manager with entity holder size: " + size);
+
     this.size = size;
     pos = new Component.Position[size];
     vel = new Component.Velocity[size];
@@ -21,6 +23,8 @@ public class EntityManager {
   }
 
   public int createEntity(int flag) {
+    System.out.println("creating a new entity with random flag: " + flag);
+
     for (int i = 0; i < size; i++) {
       if (this.flag[i] == 0) {
         this.flag[i] = flag;
