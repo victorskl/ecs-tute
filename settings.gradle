@@ -1,2 +1,3 @@
 rootProject.name = 'ecs-tute'
 include 'mini-ecs'
+include 'fun-trip'
