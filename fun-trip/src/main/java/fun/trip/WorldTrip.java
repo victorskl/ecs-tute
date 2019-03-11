@@ -10,6 +10,8 @@ import fun.trip.components.IntakeSpecific;
 import fun.trip.components.Rate;
 import fun.trip.components.SimName;
 import fun.trip.components.SimQueue;
+import fun.trip.systems.ClockSystem;
+import fun.trip.systems.TraineeListSystem;
 import fun.trip.systems.TraineeRecruitmentSystem;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class WorldTrip {
     WorldConfiguration config = new WorldConfigurationBuilder()
       //  .dependsOn(MyPlugin.class)
         .with(
-            new TraineeRecruitmentSystem()
+            new TraineeRecruitmentSystem(), new ClockSystem(), new TraineeListSystem()
             ).build();
 
 
@@ -52,7 +54,7 @@ public class WorldTrip {
 
     world.edit(bwcId)
         .add(new IntakeSpecific(new ArrayList<>(), 3))
-        .add( new Rate("C", BigDecimal.valueOf(2)))
+        .add(new Rate("C", BigDecimal.valueOf(2)))
         .add(new SimName("bwc")).add( new SimQueue());
 
     float delta = 0;

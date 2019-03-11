@@ -1,0 +1,6 @@
+package fun.trip.components;
+
+public enum Gender {
+
+  FEMALE, MALE, NON_BINARY, UNDEFINED, BIGENDER, ANDROGYNE, NEUTROIS, INTERGENDER, DEMIBOY, DEMIGIRL;
+}

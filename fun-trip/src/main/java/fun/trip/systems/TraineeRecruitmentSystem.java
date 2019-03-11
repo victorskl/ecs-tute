@@ -1,9 +1,15 @@
 package fun.trip.systems;
 
+import com.artemis.ArchetypeBuilder;
 import com.artemis.Aspect;
 import com.artemis.Entity;
 import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.systems.IteratingSystem;
+import com.devskiller.jfairy.Fairy;
+import com.devskiller.jfairy.producer.person.Person;
+import com.devskiller.jfairy.producer.person.PersonProperties;
+import com.devskiller.jfairy.producer.person.PersonProperties.PersonProperty;
+import fun.trip.components.FullName;
 import fun.trip.components.IntakeSpecific;
 import fun.trip.components.Rate;
 import fun.trip.components.SimName;
@@ -33,6 +39,15 @@ public class TraineeRecruitmentSystem extends EntityProcessingSystem {
     //if(world.getDelta() % rate.getParam() == 0) {
 
       int trainee = world.create();
+
+      Fairy fairy = Fairy.create();
+
+
+      fairy.creditCard();
+      Person person = fairy.person(PersonProperties.ageBetween(18,35));
+
+      world.edit(trainee).add(new FullName(person.getFirstName(), person.getLastName()));
+
 
       if(queue.getEntities() == null) {
         queue.setEntities(new LinkedList<>());
