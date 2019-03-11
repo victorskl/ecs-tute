@@ -48,9 +48,9 @@ public class WorldTrip {
             .add(SimQueue.class)
             .build(world);
 
-    int bwcId = world.create(intakePointArchtype);
+    int ceebieId = world.create(intakePointArchtype);
 
-    world.edit(bwcId)
+    world.edit(ceebieId)
         .add(new IntakeSpecific("ceebie", new ArrayList<>(), 3))
         .add(new Rate("C", BigDecimal.valueOf(182.5)));
 
