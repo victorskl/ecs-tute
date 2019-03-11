@@ -67,7 +67,6 @@ public class TraineeRecruitmentSystem extends EntityProcessingSystem {
     if(name.getName() == null) {
       name.setName("");
     }
-    System.out.println(name);
 
 //    name.setName(name.getName() + ".");
 //    System.out.println(name);
