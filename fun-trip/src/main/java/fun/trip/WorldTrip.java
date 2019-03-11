@@ -1,14 +1,12 @@
 package fun.trip;
 
 import com.artemis.Archetype;
-import com.artemis.ArchetypeBuilder;
-import com.artemis.Entity;
 import com.artemis.World;
 import com.artemis.WorldConfiguration;
 import com.artemis.WorldConfigurationBuilder;
 import fun.trip.components.IntakeSpecific;
 import fun.trip.components.Rate;
-import fun.trip.components.SimQueue;
+import fun.trip.prefab.IntakeAssembly;
 import fun.trip.systems.ClockSystem;
 import fun.trip.systems.TraineeListSystem;
 import fun.trip.systems.TraineeRecruitmentSystem;
@@ -25,7 +23,7 @@ public class WorldTrip {
 
 
     WorldConfiguration config = new WorldConfigurationBuilder()
-      //  .dependsOn(MyPlugin.class)
+//        .dependsOn(MyPlugin.class)
         .with(
             new TraineeRecruitmentSystem(),
             new ClockSystem(),
@@ -35,26 +33,17 @@ public class WorldTrip {
 
     World world = new World(config);
 
-    Entity e = world.createEntity();
-    System.out.println(e.getId());
-    System.out.println(world.createEntity().getId());
-    System.out.println(world.createEntity().getId());
-    System.out.println(world.createEntity().getId());
-    System.out.println(world.createEntity().getId());
-    System.out.println(world.createEntity().getId());
+    // prefabricated intake point assembly with default components
+    Archetype intakePointArchetype = IntakeAssembly.newIntakeWithDefaultComponents(world);
 
-    Archetype intakePointArchtype =
-        new ArchetypeBuilder()
-            .add(IntakeSpecific.class)
-            .add(Rate.class)
-            .add(SimQueue.class)
-            .build(world);
+    // create intake1 entity using prefabricated intake point archetype
+    int intake1 = world.create(intakePointArchetype);
 
-    int ceebieId = world.create(intakePointArchtype);
-
-    world.edit(ceebieId)
-        .add(new IntakeSpecific("ceebie", new ArrayList<>(), 3))
+    world.edit(intake1)
+        .add(new IntakeSpecific("intake1", new ArrayList<>(), 3))
         .add(new Rate("C", BigDecimal.valueOf(182.5)));
+
+    // sim loop
 
     float delta = 0;
     while(true) {

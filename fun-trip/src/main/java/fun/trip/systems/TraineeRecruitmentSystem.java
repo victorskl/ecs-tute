@@ -25,14 +25,13 @@ public class TraineeRecruitmentSystem extends EntityProcessingSystem {
     SimQueue queue = e.getComponent(SimQueue.class);
     IntakeSpecific intakeSpecific = e.getComponent(IntakeSpecific.class);
 
-    System.out.println("intake name: " + intakeSpecific.getName());
-    System.out.println("rate.getParam(): " + rate.getParam());
+    System.out.println("TraineeRecruitmentSystem: intake name: " + intakeSpecific.getName() + ", rate.getParam(): " + rate.getParam());
 
     if (rate.getParam().doubleValue() > 0) {
 
       BigDecimal intakeRate = BigDecimal.valueOf(365D).divide(rate.getParam());
 
-      System.out.println("intakeRate: " + intakeRate);
+      System.out.println("TraineeRecruitmentSystem: intakeRate: " + intakeRate);
 
       if (world.getDelta() % intakeRate.doubleValue() == 0) {
 
@@ -49,7 +48,7 @@ public class TraineeRecruitmentSystem extends EntityProcessingSystem {
 
     }
 
-    System.out.println("size: " + queue.getEntities().size());
+    System.out.println("TraineeRecruitmentSystem: intake queue size: " + queue.getEntities().size());
 
   }
 }

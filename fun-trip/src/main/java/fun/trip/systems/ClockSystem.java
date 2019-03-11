@@ -11,6 +11,6 @@ public class ClockSystem extends BaseEntitySystem {
 
   @Override
   protected void processSystem() {
-    System.out.println("Clock: " + world.getDelta());
+    System.out.println("ClockSystem: " + world.getDelta());
   }
 }
