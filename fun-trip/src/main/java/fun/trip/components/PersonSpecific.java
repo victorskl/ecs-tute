@@ -2,6 +2,7 @@ package fun.trip.components;
 
 import com.artemis.Component;
 import fun.trip.common.CareerStatus;
+import fun.trip.common.Gender;
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Data;

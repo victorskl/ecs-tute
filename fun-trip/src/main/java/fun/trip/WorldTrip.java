@@ -8,7 +8,6 @@ import com.artemis.WorldConfiguration;
 import com.artemis.WorldConfigurationBuilder;
 import fun.trip.components.IntakeSpecific;
 import fun.trip.components.Rate;
-import fun.trip.components.SimName;
 import fun.trip.components.SimQueue;
 import fun.trip.systems.ClockSystem;
 import fun.trip.systems.TraineeListSystem;
@@ -46,16 +45,14 @@ public class WorldTrip {
         new ArchetypeBuilder()
             .add(IntakeSpecific.class)
             .add(Rate.class)
-            .add(SimName.class)
             .add(SimQueue.class)
             .build(world);
 
     int bwcId = world.create(intakePointArchtype);
 
     world.edit(bwcId)
-        .add(new IntakeSpecific(new ArrayList<>(), 3))
-        .add(new Rate("C", BigDecimal.valueOf(2)))
-        .add(new SimName("bwc")).add( new SimQueue());
+        .add(new IntakeSpecific("ceebie", new ArrayList<>(), 3))
+        .add(new Rate("C", BigDecimal.valueOf(182.5)));
 
     float delta = 0;
     while(true) {

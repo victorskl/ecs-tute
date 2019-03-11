@@ -1,4 +1,4 @@
-package fun.trip.components;
+package fun.trip.common;
 
 public enum Gender {
 

@@ -12,6 +12,8 @@ import lombok.NonNull;
 @Data
 public class IntakeSpecific extends Component {
 
+  private String name;
+
   @NonNull
   private List<String> produces;
 
