@@ -28,7 +28,9 @@ public class WorldTrip {
     WorldConfiguration config = new WorldConfigurationBuilder()
       //  .dependsOn(MyPlugin.class)
         .with(
-            new TraineeRecruitmentSystem(), new ClockSystem(), new TraineeListSystem()
+            new TraineeRecruitmentSystem(),
+            new ClockSystem(),
+            new TraineeListSystem()
             ).build();
 
 

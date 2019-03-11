@@ -22,4 +22,9 @@ public class FullName extends Component {
     this.firstName = firstName;
     this.lastName = lastName;
   }
+
+  @Override
+  public String toString() {
+    return String.format("%s, %s", this.lastName, this.firstName);
+  }
 }
