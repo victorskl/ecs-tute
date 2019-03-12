@@ -11,9 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SessionSize extends Component {
 
-  private int minWaitTime;
+  private int minSessionSize;
 
-  private int maxWaitTime;
-
-  private ChronoUnit timeUnit;
+  private int maxSessionSize;
 }
